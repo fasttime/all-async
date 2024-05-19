@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+<meta charset='utf-8'>
+<link rel='icon' href='browser-spec-runner-files/favicon-pending.ico'>
+<link rel='stylesheet' href='../node_modules/mocha-bar/mocha-bar.css'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+<meta name='viewport' content='width=device-width'>
+<script type='importmap'>
+    {
+        "imports": {
+            "mocha": "./browser-spec-runner-files/mocha-shim.js",
+            "node:assert/strict": "./browser-spec-runner-files/assert-polyfill.js"
+        }
+    }
+</script>
+<script src='../node_modules/mocha-bar/mocha-bar.js'></script>
+<script src='browser-spec-runner-files/browser-spec-runner.js' type='module'></script>
+<style>
+
+body { margin: 1.33em; }
+
+h1 { font-family: sans-serif; text-align: center; }
+
+</style>
+<title>all-async Test Suite</title>
+<body>
+<h1>all-async Library Test Suite</h1>
+<div id='mocha'></div>

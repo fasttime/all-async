@@ -1,0 +1,44 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: '**'
+    tags-ignore: '**'
+  pull_request:
+    branches: '**'
+
+jobs:
+
+  lint:
+
+    name: Lint Files
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: '22'
+    - run: |
+        npm install
+        npm run lint
+
+  test:
+
+    name: Test (Node.js ${{ matrix.node-version }})
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: ['16.0.0', '16', '18', '20', '22']
+
+    steps:
+    - uses: actions/checkout@v4
+    - uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: |
+        npm uninstall @origin-1/eslint-config
+        npm test

@@ -1,0 +1,55 @@
+{
+  "name": "all-async",
+  "version": "0.0.2",
+  "description": "Await multiple promises with limited concurrency.",
+  "keywords": [
+    "async",
+    "promise"
+  ],
+  "license": "ISC",
+  "author": "Francesco Trotta <ft@fasttime.org> (https://github.com/fasttime)",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fasttime/all-async.git"
+  },
+  "scripts": {
+    "build": "npm install && npm run build-no-install",
+    "build-no-install": "node dev/clean && npm run lint && node dev/coverage && node dev/bundle",
+    "clean": "node dev/clean",
+    "coverage": "node dev/coverage",
+    "lint": "eslint . --format compact",
+    "make-docs": "node dev/make-docs",
+    "release": "npm version -m \"release %s\"",
+    "test": "mocha --check-leaks test/*.spec.js",
+    "test-serve": "node dev/test-serve.js"
+  },
+  "devDependencies": {
+    "@origin-1/eslint-config": "latest",
+    "ansi-colors": "latest",
+    "c8js": "latest",
+    "eslint": "latest",
+    "eslint-formatter-compact": "latest",
+    "globals": "latest",
+    "mocha": "latest",
+    "mocha-bar": "latest",
+    "rollup": "latest"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./global": {
+      "types": "./dist/global.d.ts",
+      "default": "./dist/global.cjs"
+    }
+  },
+  "type": "module"
+}
